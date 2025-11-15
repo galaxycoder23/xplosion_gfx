@@ -7,13 +7,13 @@ export interface Score {
   score_a: number;
   score_b: number;
   active: boolean;
-  quater: string;
+  quarter: string;
   start_time: number;
 }
 
 export default function ScoreControl() {
   const [isEditMode, setIsEditMode] = useState(false);
-  const [state, setState] = useState<Score>({ team_a: "", team_b: "", score_a: 0, score_b: 0, active: false, quater: "", start_time: 0 });
+  const [state, setState] = useState<Score>({ team_a: "", team_b: "", score_a: 0, score_b: 0, active: false, quarter: "", start_time: 0 });
   const [time, setTime] = useState(0); // 15 minutes in seconds
 
   function updateTime(){
@@ -119,17 +119,17 @@ export default function ScoreControl() {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="quater">
-              Quater
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="quarter">
+              Quarter
             </label>
             <select
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="quater"
-              value={state?.quater || ""}
-              onChange={(e) => setStateViaSocket({ ...state, quater: e.target.value } as Score)}
+              id="quarter"
+              value={state?.quarter || ""}
+              onChange={(e) => setStateViaSocket({ ...state, quarter: e.target.value } as Score)}
               disabled={!isEditMode}
             >
-              <option value="">Select Quater</option>
+              <option value="">Select Quarter</option>
               <option value="Q1">Q1</option>
               <option value="Q2">Q2</option>
               <option value="Q3">Q3</option>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import style from "../css/lowerThird.netball.module.css"
+import style from "../css/lowerThird.americanFootball.module.css"
 import { socket } from "../socket";
 import { LowerThirdItem } from "./lt_control";
 
-export default function LowerThirdGraphicNetball() {
+export default function LowerThirdGraphicAmericanFootball() {
   
   const [active, setActive] = useState(false);
   const [state, setState] = useState<LowerThirdItem>({name:"Test Name",role:"Test Role",active:"false"})
