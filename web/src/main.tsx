@@ -13,6 +13,8 @@ import LowerThirdGraphicNetball from './pages/lt_graphic_netball.tsx';
 import GraphGraphicNetball from './pages/graph_graphic_netball.tsx';
 import LowerThirdGraphicAmericanFootball from './pages/lt_graphic_american_football.tsx';
 import GraphGraphicAmericanFootball from './pages/graph_graphic_american_football.tsx';
+import ScoreGraphicBoxing from './pages/score_graphic_boxing.tsx';
+import ScoreControlBoxing from './pages/score_control_boxing.tsx';
 
 const router = createBrowserRouter([
 
@@ -56,6 +58,14 @@ const router = createBrowserRouter([
   {
     path: "/score_control",
     element: <ScoreControl/>,
+  },
+  {
+    path: "/score_boxing",
+    element: <ScoreGraphicBoxing/>,
+  },
+  {
+    path: "/score_control_boxing",
+    element: <ScoreControlBoxing/>,
   },
   {
     path: "*",

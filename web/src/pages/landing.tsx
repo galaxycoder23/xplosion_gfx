@@ -31,5 +31,11 @@ export default function Landing(){
         <div>
             <a className="text-lg font-bold underline" href="/score_control">Score Control</a>
         </div>
+        <div>
+            <a className="text-lg font-bold underline" href="/score_boxing">Score Graphic - Boxing</a>
+        </div>
+        <div>
+            <a className="text-lg font-bold underline" href="/score_control_boxing">Score Control - Boxing</a>
+        </div>
     </div>)
 }

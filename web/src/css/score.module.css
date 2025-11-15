@@ -64,6 +64,14 @@
     font-weight: 200;
 }
 
+.round{
+    background: #d0602e;
+    color:white;
+    padding-top: 5px;
+    line-height: 45px;
+    font-weight: 200;
+}
+
 .time{
     background: #91202e;
     color:white;
