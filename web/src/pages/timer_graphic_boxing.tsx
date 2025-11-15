@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-import style from "../css/score.boxing.module.css";
+import style from "../css/timer.boxing.module.css";
 import { socket } from "../socket";
-import { ScoreBoxing } from "./score_control_boxing";
+import { TimerBoxing } from "./timer_control_boxing";
 
-export default function ScoreGraphicBoxing() {
-  const [state, setState] = useState<ScoreBoxing>({
-    team_a: "",
-    team_b: "",
-    score_a: 0,
-    score_b: 0,
+export default function TimerBoxingGraphic() {
+  const [state, setState] = useState<TimerBoxing>({
+    participant_a: "",
+    participant_b: "",
     active: false,
     round: "",
     start_time: 0,
@@ -31,16 +29,16 @@ export default function ScoreGraphicBoxing() {
   }, [state.start_time]); 
 
   useEffect(() => {
-    function onPlay(state: ScoreBoxing) {
+    function onPlay(state: TimerBoxing) {
       console.log("onPlay", state);
       setState(state);
     }
 
-    function onStop(state: ScoreBoxing) {
+    function onStop(state: TimerBoxing) {
       console.log("onStop", state);
     }
 
-    function onState(state: ScoreBoxing) {
+    function onState(state: TimerBoxing) {
       console.log("onState", state);
       setState(state);
     }
@@ -59,16 +57,14 @@ export default function ScoreGraphicBoxing() {
   return (
     <div id={style.mask}>
       <div id={style.scorebar}>
-        <div className={style.teamColor}></div>
-        <div className={style.teamName}>{state.team_a}</div>
-        <div className={style.score}>{state.score_a}</div>
+        <div className={style.participantAColour}></div>
+        <div className={style.participantName}>{state.participant_a}</div>
         <div className={style.time}>
           {Math.floor(Math.max(time,0) / 60)}:{String(Math.max(time,0) % 60).padStart(2, "0")}
         </div>
         <div className={style.round}>{state.round}</div>
-        <div className={style.score}>{state.score_b}</div>
-        <div className={style.teamName}>{state.team_b}</div>
-        <div className={style.teamColor}></div>
+        <div className={style.participantName}>{state.participant_b}</div>
+        <div className={style.participantBColour}></div>
       </div>
     </div>
   );

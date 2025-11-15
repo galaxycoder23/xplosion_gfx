@@ -1,5 +1,3 @@
-
-
 :root {
     --box-padding-right: 100px;
     --box-height: 100px;
@@ -21,7 +19,6 @@
 }
 
 #scorebar{
-    
     position: relative;
     height: 50px;
     width: var(--width);
@@ -31,7 +28,7 @@
     -moz-box-shadow: 0px 0px 38px -17px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 38px -17px rgba(0,0,0,0.75);
     display: grid;
-    grid-template-columns: 20px 1fr 60px 80px 80px 60px 1fr 20px;
+    grid-template-columns: 50px 1fr 80px 80px 1fr 50px;
     text-align: center;
     /* line-height: 60px; */
     font-size: 25px;
@@ -39,34 +36,17 @@
     color:white
 }
 
-.teamName{
+.participantName{
     text-transform: uppercase;
-    letter-spacing: 4px;
+    /* letter-spacing: 4px; */
     font-weight: 200;
-    background: #62264d;
+    background: #000000;
     padding-top: 5px;
     line-height: 45px;
-}
-
-.score{
-    background: white;
-    padding-top: 5px;
-    line-height: 45px;
-    color:black;
-    font-weight: 700;
-    background: linear-gradient(to bottom, white, #f0f0f0);
-}
-
-.quarter{
-    background: #d0602e;
-    color:white;
-    padding-top: 5px;
-    line-height: 45px;
-    font-weight: 200;
 }
 
 .round{
-    background: #d0602e;
+    background: #62264d;
     color:white;
     padding-top: 5px;
     line-height: 45px;
@@ -81,6 +61,10 @@
     font-weight: 200;
 }
 
-.teamColor{
-    background: #62264d;
+.participantAColour{
+    background: #262962;
+}
+
+.participantBColour{
+    background: #ff00a6;
 }

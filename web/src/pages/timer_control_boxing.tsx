@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
 import { socket } from "../socket";
 
-export interface ScoreBoxing {
-  team_a: string;
-  team_b: string;
-  score_a: number;
-  score_b: number;
+export interface TimerBoxing {
+  participant_a: string;
+  participant_b: string;
   active: boolean;
   round: string;
   start_time: number;
 }
 
-export default function ScoreControlBoxing() {
+export default function TimerControlBoxing() {
   const [isEditMode, setIsEditMode] = useState(false);
-  const [state, setState] = useState<ScoreBoxing>({ team_a: "", team_b: "", score_a: 0, score_b: 0, active: false, round: "", start_time: 0 });
+  const [state, setState] = useState<TimerBoxing>({ participant_a: "", participant_b: "", active: false, round: "", start_time: 0 });
   const [time, setTime] = useState(0); // 2 minutes in seconds
 
   function updateTime(){
@@ -45,17 +43,17 @@ export default function ScoreControlBoxing() {
     };
   }, []);
 
-  function setStateViaSocket(state: ScoreBoxing) {
+  function setStateViaSocket(state: TimerBoxing) {
     socket.emit("score_update", state);
   }
 
   function setStartTimeToNow() {
     const now = Math.floor(Date.now() / 1000);
-    setStateViaSocket({ ...state, start_time: now } as ScoreBoxing);
+    setStateViaSocket({ ...state, start_time: now } as TimerBoxing);
   }
 
   function incrementStartTime(seconds: number) {
-    setStateViaSocket({ ...state, start_time: (state.start_time || 0) + seconds } as ScoreBoxing);
+    setStateViaSocket({ ...state, start_time: (state.start_time || 0) + seconds } as TimerBoxing);
   }
 
   return (
@@ -93,28 +91,28 @@ export default function ScoreControlBoxing() {
           </div>
           {/* Existing code */}
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="team_a">
-              Team A
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="participant_a">
+              Participant A
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="team_a"
+              id="participant_a"
               type="text"
-              value={state?.team_a || ""}
-              onChange={(e) => setStateViaSocket({ ...state, team_a: e.target.value } as ScoreBoxing)}
+              value={state?.participant_a || ""}
+              onChange={(e) => setStateViaSocket({ ...state, participant_a: e.target.value } as TimerBoxing)}
               disabled={!isEditMode}
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="team_b">
-              Team B
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="participant_b">
+              Participant B
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="team_b"
+              id="participant_b"
               type="text"
-              value={state?.team_b || ""}
-              onChange={(e) => setStateViaSocket({ ...state, team_b: e.target.value } as ScoreBoxing)}
+              value={state?.participant_b || ""}
+              onChange={(e) => setStateViaSocket({ ...state, participant_b: e.target.value } as TimerBoxing)}
               disabled={!isEditMode}
             />
           </div>
@@ -126,7 +124,7 @@ export default function ScoreControlBoxing() {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="round"
               value={state?.round || ""}
-              onChange={(e) => setStateViaSocket({ ...state, round: e.target.value } as ScoreBoxing)}
+              onChange={(e) => setStateViaSocket({ ...state, round: e.target.value } as TimerBoxing)}
               disabled={!isEditMode}
             >
               <option value="">Select Round</option>
@@ -134,46 +132,6 @@ export default function ScoreControlBoxing() {
               <option value="2 of 3">Round 2</option>
               <option value="3 of 3">Round 3</option>
             </select>
-          </div>
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-                onClick={() => setStateViaSocket({ ...state, score_a: (state?.score_a || 0) + 1 } as ScoreBoxing)}
-                disabled={!isEditMode}
-              >
-                +
-              </button>
-              <span className="mx-4 text-xl">{state?.score_a || 0}</span>
-              <button
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-                onClick={() => setStateViaSocket({ ...state, score_a: (state?.score_a || 0) - 1 } as ScoreBoxing)}
-                disabled={!isEditMode}
-              >
-                -
-              </button>
-            </div>
-            <div className="flex items-center">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-                onClick={() => setStateViaSocket({ ...state, score_b: (state?.score_b || 0) + 1 } as ScoreBoxing)}
-                disabled={!isEditMode}
-              >
-                +
-              </button>
-              <span className="mx-4 text-xl">{state?.score_b || 0}</span>
-              <button
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-                onClick={() => setStateViaSocket({ ...state, score_b: (state?.score_b || 0) - 1 } as ScoreBoxing)}
-                disabled={!isEditMode}
-              >
-                -
-              </button>
-            </div>
           </div>
         
           <div className="flex items-center justify-between">
