@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import style from "../css/score.module.css";
+import style from "../css/score.boxing.module.css";
 import { socket } from "../socket";
 import { ScoreBoxing } from "./score_control_boxing";
 
@@ -13,10 +13,10 @@ export default function ScoreGraphicBoxing() {
     round: "",
     start_time: 0,
   });
-  const [time, setTime] = useState(0); // 15 minutes in seconds
+  const [time, setTime] = useState(0); // 2 minutes in seconds
 
   function updateTime(){
-    setTime((state.start_time) - Math.floor(Date.now() / 1000) + 900);
+    setTime((state.start_time) - Math.floor(Date.now() / 1000) + 120);
   }
 
   useEffect(() => {

@@ -14,10 +14,10 @@ export interface ScoreBoxing {
 export default function ScoreControlBoxing() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [state, setState] = useState<ScoreBoxing>({ team_a: "", team_b: "", score_a: 0, score_b: 0, active: false, round: "", start_time: 0 });
-  const [time, setTime] = useState(0); // 15 minutes in seconds
+  const [time, setTime] = useState(0); // 2 minutes in seconds
 
   function updateTime(){
-    setTime((state.start_time) - Math.floor(Date.now() / 1000) + 900);
+    setTime((state.start_time) - Math.floor(Date.now() / 1000) + 120);
   }
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function ScoreControlBoxing() {
               onClick={setStartTimeToNow}
               disabled={!isEditMode}
             >
-              15:00 Start
+              Start 02:00
             </button>
             <div className="flex items-center">
               <button
