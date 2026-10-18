@@ -10,7 +10,7 @@ export default function ScoreGraphic() {
     score_a: 0,
     score_b: 0,
     active: false,
-    quater: "",
+    quarter: "",
     start_time: 0,
   });
   const [time, setTime] = useState(0); // 15 minutes in seconds
@@ -65,7 +65,7 @@ export default function ScoreGraphic() {
         <div className={style.time}>
           {Math.floor(Math.max(time,0) / 60)}:{String(Math.max(time,0) % 60).padStart(2, "0")}
         </div>
-        <div className={style.quater}>{state.quater}</div>
+        <div className={style.quarter}>{state.quarter}</div>
         <div className={style.score}>{state.score_b}</div>
         <div className={style.teamName}>{state.team_b}</div>
         <div className={style.teamColor}></div>

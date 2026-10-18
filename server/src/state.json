@@ -1,9 +1,9 @@
 {
   "lowerThirds": {
-    "0": { "name": "Asha", "role": "Presenter", "active": "false" },
+    "0": { "name": "Lilly Nitsch and Ayana Sharma", "role": "Guild TV", "active": "false" },
     "1": {
-      "name": "Lisandr & Thomas",
-      "role": "Commentators",
+      "name": "James Schofield and Milo Wakefield",
+      "role": "Guild TV commentary team",
       "active": "false"
     }
   },
